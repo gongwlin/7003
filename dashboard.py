@@ -3,6 +3,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
+import platform
 
 # -------------------------------------------------------------------------------#
 # 1. 加载数据
@@ -245,4 +246,5 @@ def update_global_forecast_table(_):
 # 4. 运行应用
 # -------------------------------------------------------------------------------#
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    isWindows = platform.system() == 'Windows'
+    app.run(debug=isWindows, port=7003)
