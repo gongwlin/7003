@@ -60,6 +60,7 @@ X_years_full = np.array([int(y) for y in available_years]).reshape(-1, 1)
 
 for idx, row in aging_data.iterrows():
     country_name = row['country']
+    country_code = row['country_code']
     # Extract this row's 2000–2023 data
     y_vals = row[available_years].values.astype(float)
     mask = ~np.isnan(y_vals)  # Only select non-NaN values
@@ -80,6 +81,7 @@ for idx, row in aging_data.iterrows():
 
         regression_results.append({
             'country': country_name,
+            'country_code': country_code,
             'slope': model.coef_[0],
             'intercept': model.intercept_,
             'mse': mse,
